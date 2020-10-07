@@ -1,4 +1,11 @@
-use std::{io, sync::Mutex};
+use std::io;
+use std::prelude::v1::*;
+
+#[cfg(feature = "mesalock_sgx")]
+use std::sync::SgxMutex as Mutex;
+
+#[cfg(not(feature = "mesalock_sgx"))]
+use std::sync::Mutex;
 
 use crate::fmt::{WritableTarget, WriteStyle};
 
