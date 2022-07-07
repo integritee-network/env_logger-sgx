@@ -58,6 +58,7 @@
 //! [`Builder::parse`]: struct.Builder.html#method.parse
 //! [`Filter::matches`]: struct.Filter.html#method.matches
 
+use std::prelude::v1::*;
 use log::{Level, LevelFilter, Metadata, Record};
 use std::collections::HashMap;
 use std::env;

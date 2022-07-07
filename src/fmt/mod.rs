@@ -29,6 +29,7 @@
 //! [`Builder::format`]: ../struct.Builder.html#method.format
 //! [`Write`]: https://doc.rust-lang.org/stable/std/io/trait.Write.html
 
+use std::prelude::v1::*;
 use std::cell::RefCell;
 use std::fmt::Display;
 use std::io::prelude::*;
