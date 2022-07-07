@@ -1,10 +1,13 @@
-use std::prelude::v1::*;
 use std::borrow::Cow;
 use std::cell::RefCell;
 use std::fmt;
 use std::io::{self, Write};
+use std::prelude::v1::*;
 use std::rc::Rc;
+#[cfg(not(feature = "mesalock_sgx"))]
 use std::sync::Mutex;
+#[cfg(feature = "mesalock_sgx")]
+use std::sync::SgxMutex as Mutex;
 
 use log::Level;
 use termcolor::{self, ColorChoice, ColorSpec, WriteColor};
@@ -363,7 +366,7 @@ impl Style {
     /// });
     /// ```
     pub fn set_dimmed(&mut self, yes: bool) -> &mut Style {
-        self.spec.set_dimmed(yes);
+        //self.spec.set_dimmed(yes); // Doesnt seem to work ;(
         self
     }
 
