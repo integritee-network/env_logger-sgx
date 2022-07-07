@@ -3,7 +3,11 @@ mod termcolor;
 
 use self::atty::{is_stderr, is_stdout};
 use self::termcolor::BufferWriter;
-use std::{fmt, io, mem, sync::Mutex};
+#[cfg(not(feature = "mesalock_sgx"))]
+use std::sync::Mutex;
+#[cfg(feature = "mesalock_sgx")]
+use std::sync::SgxMutex as Mutex;
+use std::{boxed::Box, fmt, io, mem};
 
 pub(super) mod glob {
     pub use super::termcolor::glob::*;
